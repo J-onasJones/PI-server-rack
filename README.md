@@ -50,6 +50,9 @@ This setup includes a custom designed and built circuit board that manages the c
 - **- 2**: Ground for `5V Out` on Master PI
 - **\~ 1**: Modulation Pin for large cooling fan. Connected to `GPIO_24` on Master PI
 - **\~ 2**: Modulation Pin for small cooling fan. Connected to `GPIO_25` on Master PI
+- **XOR 1**: XOR-Gate 1. Determines Master PI status
+- **XOR 2**: XOR-Gate 2. Determines slave PI status
+- **TR1**, **TR2**, **TR3**: NPN Transistors
 
 # In-more-depth explanation
 
