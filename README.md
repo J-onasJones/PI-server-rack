@@ -9,7 +9,7 @@ Required for this to work without any modifications are:
 - 2x Raspberry PI's with GPIO Pins (Model A, A+, B or B+), any version works (I use a **Raspberry PI 4 B** and **Raspberry PI 1.2 B+**) and needed power, ethernet, etc. -connections
 - 2x cooling fan (I used 1x 5V & 1x 12V fan), external 12V power source (or matching one for the large fan)
 - 6x GPIO cables
-- fan control pcb with control circuit (The needed circuit is described [here](https://github.com/J-onasJones/PI-MC-WATCHER/#fan-control-circuit))
+- fan control pcb with control circuit (The needed circuit is described [here](#fan-control-circuit))
 
 ### PC Module
 The PC module requests all kinds of system information from both Raspberry PI'S making use of FTP. The Raspberry PI hosts an FTP server from which the PC fetches the text file `output.txt` containing all infos.
@@ -30,8 +30,8 @@ The Rpio Slave Module transmits its fanspeed requirments over 2 GPIO pins to the
 6. Make the programs run automatically on launch (optional)
 7. Edit **IP adresses**, **ports**, **usernames**, **passwords**, **configs**, etc... on all 3 programs
 8. Connect 2 GPIO pins from the Slave on pins `GPIO_17` and `GPIO_18` to the Master pins `GPIO_17` and `GPIO_18` (17 to 17  and 18 to 18)
-9. Connect the GPIO pins `GPIO_4` and `3.3V OUt` on both PI'S and pin `GPIO_24`, `GPIO_25` and `5V out` of the Master with the fan control circuit board. For pin mapping, view [here](https://github.com/J-onasJones/PI-MC-WATCHER/#fan-control-circuit).
-10. Connect the cooling fans like shown [here](https://github.com/J-onasJones/PI-MC-WATCHER/#fan-control-circuit)
+9. Connect the GPIO pins `GPIO_4` and `3.3V OUt` on both PI'S and pin `GPIO_24`, `GPIO_25` and `5V out` of the Master with the fan control circuit board. For pin mapping, view [here](#fan-control-circuit).
+10. Connect the cooling fans like shown [here](#fan-control-circuit)
 
 ## Fan control circuit
 
