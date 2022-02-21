@@ -14,7 +14,7 @@ Required for this to work without any modifications are:
 ### PC Module
 The PC module requests all kinds of system information from both Raspberry PI'S making use of FTP. The Raspberry PI hosts an FTP server from which the PC fetches the text file `output.txt` containing all infos.
 
-### Rpi Master Module
+### RPi Master Module
 The Rpi Master Module (or Raspberry Pi Master module) gets all sorts of informations from its own system and Minecraft Servers and writes them to the `output.txt` file. It also gets fanspeed requirments from the **RPi Slave Module** making use of binary signal transmission over 2 GPIO pins. This module then controls the fan speeds.
 
 ### RPi Slave Module
