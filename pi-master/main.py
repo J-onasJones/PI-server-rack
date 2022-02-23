@@ -1,3 +1,5 @@
+VERSION = "0.1.1"
+
 from http import server
 import RPi.GPIO as GPIO
 import subprocess, os, time, psutil
@@ -10,7 +12,7 @@ print_stats = True
 ignore_slave = True
 
 # Starting Messages
-print("Starting PI-MC-WATCHER v0.0.1 for RPi")
+print("Starting PI-MC-WATCHER v" + VERSION + " for RPi")
 print("Processing first loop. Each loop takes 5 seconds...")
 print("\n")
 if print_stats:
@@ -42,7 +44,7 @@ GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # setting up control pin for fancontrol
-GPIO.setup(244, GPIO.OUT)
+GPIO.setup(4, GPIO.OUT)
 
 # setting up power pin for second fancontrol
 GPIO.setup(25, GPIO.OUT)
@@ -218,31 +220,31 @@ while True:
     
 
     if fanmode == 100:
-        GPIO.output(24, True)
+        GPIO.output(4, True)
         time.sleep(2)
     elif fanmode == 75:
         while i < 6:
-            GPIO.output(24, True)
+            GPIO.output(4, True)
             time.sleep(0.3)
-            GPIO.output(24, False)
+            GPIO.output(4, False)
             time.sleep(0.1)
             i = i + 1
     elif fanmode == 50:
         while i < 6:
-            GPIO.output(24, True)
+            GPIO.output(4, True)
             time.sleep(0.2)
-            GPIO.output(24, False)
+            GPIO.output(4, False)
             time.sleep(0.2)
             i = i + 1
     elif fanmode == 25:
         while i < 6:
-            GPIO.output(24, True)
+            GPIO.output(4, True)
             time.sleep(0.1)
-            GPIO.output(24, False)
+            GPIO.output(4, False)
             time.sleep(0.3)
             i = i + 1
     else:
-        GPIO.output(24, True)
+        GPIO.output(4, True)
         time.sleep(2)
 
     # write all data to list

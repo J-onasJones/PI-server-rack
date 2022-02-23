@@ -1,6 +1,9 @@
 # PI-MC-WATCHER
 A system that allows Monitoring of Raspberry PI('s) and it's running Minecraft Server(s) on PC and Mac
 
+## Why?
+Because I can. Overcomplicated stupid projects are a lot of fun.
+
 ## What it is about
 The system contains of three parts. Those are the **PC Module**, **RPi Master Module** and ** RPi Slave Module**
 
