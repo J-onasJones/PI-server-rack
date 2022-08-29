@@ -1,50 +1,23 @@
 # WARNING: This file is outdated. Since the last commit, a lot has changed.
 
-# PI-MC-WATCHER
-A system that allows Monitoring of Raspberry PI('s) and it's running Minecraft Server(s) on PC and Mac as well as controlling their cooling
+# pi server rack
+Monitor and control a Raspberry PI server rack.
 
 ## Why?
 Because I can. Overcomplicated stupid projects are a lot of fun.
-
-## What it is about
-The system contains of three parts. Those are the **PC Module**, **RPi Master Module** and **RPi Slave Module**
-
 ### To "briefly" explain the concenpt:
-- The idea is to have a small server rack containing two Raspberry PI's (PI 4B & PI 1.2B+)
-- We will call the PI 4B the *Master* and the PI 1.2B+ will now be the *Slave*
-- The Master hosts all the information of its own system (such as CPU temps, frequency, etc.) and the ones from the Slave.
-- The PC (or Mac) runs a program that, every cycle, requests all the data from the Master to essentially work as a Monitoring program for both PI's
-- Let's introduce the fan control:
-    - We have a large 80mm Fan that cools both PI's and a smaller 40mm fan that primarily cools the Master (it requires more cooling due to it being overclocked and its hosted Minecraft servers)
-    - The small fan works as following:
-        - The small fan is either on at 100% or off at 0%. 
-        - As soon as the Master's CPU reaches `50°C` the small fan starts to spin
-        - The fan requires a 5V. therefore the additional [fancontrol circuit](#fan-control-circuit):
-            - As soon as the dedicated GPIO pin on the Master turns on, the transistor switches on and powers the fan with 5V from the 5V GPIO pin.
-    - The large fan works as following:
-        - The small fan is either at 25%, 50%, 75% or 100% power
-        - As it cools both PI's, it needs to prioritize the cooling requirements of both PI's it always chooses the higher cooling requirment
-- Now the Minecraft server(s):
-    - The Master hosts two Minecraft servers and currently implemented is the support for a single Minecraft server.
-    - The Master collects a variety of informations about the server of choice and throws it together with its other system information to form an array (or list in python) with all the information which then "travels" to the PC
+A server rack containing 2 Raspberry PI's (Pi 4 & Pi 1.2) and an Arduino Nano is cooled by 2 fans. A display at the front of the rack shows some status infos along with some buttons for direct control of the PI's.
+The Arduino's role is to communicate with the PC that it is connected to via USB for monitoring purposes and to tweak settings from the PC.
+The display is controlled by the arduino.
 
 ### Required for this to work without any modifications are: 
-- 1x PC or macboock
-- 2x Raspberry PI's with GPIO Pins (Model A, A+, B or B+), any version works (I use a **Raspberry PI 4 B** and **Raspberry PI 1.2 B+**) and needed power, ethernet, etc. -connections
+- 1x PC
+- 2x Raspberry PI's with GPIO Pins (Model A, A+, B or B+), any version works (I use a **Raspberry PI 4 B** and **Raspberry PI 1.2 B+**) and needed power, ethernet for temporary ssh access
 - 2x cooling fan (I used 1x 5V & 1x 12V fan), external 12V power source (or matching one for the large fan)
-- 6x GPIO cables
-- fan control pcb with control circuit (The needed circuit is described [here](#fan-control-circuit))
+- GPIO cables
+- fan control pcb with control circuit (The needed circuit is described [here](#control-circuit))
 
-### PC Module
-The PC module requests all kinds of system information from both Raspberry PI'S making use of FTP. The Raspberry PI hosts an FTP server from which the PC fetches the text file `output.txt` containing all infos.
-
-### RPi Master Module
-The Rpi Master Module (or Raspberry Pi Master module) gets all sorts of informations from its own system and Minecraft Servers and writes them to the `output.txt` file. It also gets fanspeed requirments from the **RPi Slave Module** making use of binary signal transmission over 2 GPIO pins. This module then controls the fan speeds.
-
-### RPi Slave Module
-The Rpio Slave Module transmits its fanspeed requirments over 2 GPIO pins to the **RPi Master Module**.
-
-### Setup
+### Setup: *outdated!!!*
 ## Raspberry PI basic setup
 1. Install a UNIX operating of your choice onto both PI's
 2. If both PI's are different, declare the more powerful one as the master and install an FTP server on it
@@ -57,7 +30,7 @@ The Rpio Slave Module transmits its fanspeed requirments over 2 GPIO pins to the
 9. Connect the GPIO pins `GPIO_4` and `3.3V OUt` on both PI'S and pin `GPIO_24`, `GPIO_25` and `5V out` of the Master with the fan control circuit board. For pin mapping, view [here](#fan-control-circuit).
 10. Connect the cooling fans like shown [here](#fan-control-circuit)
 
-## Fan control circuit
+## Control circuit
 
 This setup includes a custom designed and built circuit board that manages the cooling fans. The board has the following circuit:
 
