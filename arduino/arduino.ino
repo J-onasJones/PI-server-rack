@@ -9,7 +9,8 @@
 #include "libs/LiquidCrystal/LiquidCrystal.h"
 #include "libs/ArduinoThread/Thread.h"
 #include "libs/ArduinoThread/ThreadController.h"
-//#include "src/LcdControl.h"
+
+#include "src/SerialHandler.h"
 
 /*
 Pinmap:
