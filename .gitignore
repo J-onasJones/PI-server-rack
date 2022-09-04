@@ -1,2 +1,7 @@
 # temporary files
 tmp/
+
+# rust target
+desktop/target/
+pi-master/target/
+pi-slave/target/
